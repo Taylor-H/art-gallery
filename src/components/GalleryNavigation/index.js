@@ -9,7 +9,6 @@ const GalleryNavigation = (props) => {
 
   return (
     <nav>
-      <h1>Galleries</h1>
       <NavLink to="/">Home</NavLink>
       {galleries.map((gallery) => {
         return (

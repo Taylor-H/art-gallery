@@ -16,7 +16,7 @@ let {images}  = props.art
     </Link>
     <Routes>
       <Route exact path="/galleries/:galleryId/art/:artId" element={<ArtImageTile art={props.art} />} />
-      <Route path="*" render={() => <h2>404</h2>} />
+      {/* <Route path="/*" render={() => <h2>404</h2>} /> */}
     </Routes>
 </div>
 )
