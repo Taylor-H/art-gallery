@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './styles.css';
-
 const GalleryNavigation = (props) => {
   const galleries = props.galleries;
+
+
+
+
 
   return (
     <nav>
@@ -11,7 +14,7 @@ const GalleryNavigation = (props) => {
       {galleries.map((gallery) => {
         return (
           <NavLink to={`/galleries/${gallery.id}`} key={gallery.id}>
-            {gallery.name}
+            {(gallery.theme)? gallery.theme: gallery.name}<img src={gallery.objects[0].primaryimageurl} alt={gallery.name} width="20px"/>
           </NavLink>
         );
       })}
