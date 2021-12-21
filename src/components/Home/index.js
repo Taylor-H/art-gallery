@@ -1,16 +1,20 @@
-
-
+import React from 'react';
+import harvardArt from '../../data/HarvardArt';
+import GalleryNavigation from '../GalleryNavigation';
 const Home = () => {
-return(
-<>
-  <h2>Harvard Art Museum</h2>
-  <p>An abbreviated look at the galleries of the museum at Harvard University.</p>
-</>
-)
-}
+  return (
+    <div className="page-wrapper">
+      <GalleryNavigation galleries={harvardArt.records} />
+      <h2>Harvard Art Museum</h2>
+      <p>
+        An abbreviated look at the galleries of the museum at Harvard
+        University.
+      </p>
+    </div>
+  );
+};
 
-export default Home
-
+export default Home;
 
 // const { galleryId } = useParams();
 

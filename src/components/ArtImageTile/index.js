@@ -1,23 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Routes, Route, useParams } from 'react-router-dom'
+// import { Link } from 'react-router-dom';
+// import { Routes, Route, useParams } from 'react-router-dom'
 
 const ArtImageTile = (props) => {
+  console.log('art props', props);
 let {images}  = props.art
   const image = images[0]
-  let { galleryId } = useParams();
+  // let { artId } = useParams();
   const artId  = image.imageid;
-  console.log('image', image);
-
+  // /galleries/:${galleryId}/
   return(
 <div key={artId}>
-  <Link to={`/galleries/:${galleryId}/art/:${artId}`}>
+  {/* <Link to={`art/:${artId}`}>
     <img src={image.baseimageurl} alt={image.alttext} width="10%"/>
-    </Link>
-    <Routes>
-      <Route exact path="/galleries/:galleryId/art/:artId" element={<ArtImageTile art={props.art} />} />
-      {/* <Route path="/*" render={() => <h2>404</h2>} /> */}
-    </Routes>
+    </Link> */}
+{/* <Outlet /> */}
 </div>
 )
   }
