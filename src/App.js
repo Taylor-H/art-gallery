@@ -2,7 +2,6 @@ import { Routes, Route, useParams, Outlet, Link } from 'react-router-dom';
 import React from 'react';
 import harvardArt from './data/HarvardArt';
 import GalleryNavigation from './components/GalleryNavigation';
-// import ArtView from './components/ArtView';
 import FourOFour from './components/GalleryNavigation/FourOFour'
 
 
@@ -25,17 +24,15 @@ function App() {
         <Route path="galleries/:galleryId" element={<GalleryView />} >
         <Route path="art/:artId" element={<ArtView />} />
       </Route>
-</Route>
+      </Route>
       <Route path="*" element={<FourOFour />} />
     </Routes>
   );
 }
-
 function Layout() {
   return (
     <div className="main">
       <GalleryNavigation galleries={galleries} />
-
       <div className="content">
         <Outlet />
       </div>
@@ -45,7 +42,7 @@ function Layout() {
 function Home() {
   return (
     <>
-      <h2>Harvard Art Museum :D</h2>
+      <h2>Harvard Art Museum</h2>
       <p>
         An abbreviated look at the galleries of the museum at Harvard
         University.
@@ -59,7 +56,7 @@ function GalleryView() {
     ({ gallerynumber }) => gallerynumber === galleryId);
   const artObjects = gallery.objects;
   return (
-    <div className="main">
+    <>
     <div className="gallery">
       <h1>{gallery.name}</h1>
       {gallery
@@ -68,7 +65,6 @@ function GalleryView() {
               <div className="galleryPreview">
                 <img src={art.images[0].baseimageurl} alt={art.title} />
                 {art.title}
-                {art.id}
               </div>
             </Link>
           ))
@@ -77,7 +73,7 @@ function GalleryView() {
               <div className="art">
         <Outlet />
       </div>
-      </div>
+      </>
   );
 }
 function ArtView() {

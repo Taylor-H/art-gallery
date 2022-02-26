@@ -1,34 +1,53 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
-
+import { HomeIcon } from '../Styled';
 const GalleryNavigation = (props) => {
   const galleries = props.galleries;
-  // console.log('galleries from GalleryNav', galleries);
-  return (
-    <nav>
-    <Link to="/">Home</Link>
-    {galleries.map((gallery) => {
-      const preImg = gallery.objects[0].primaryimageurl;
-      return (
-        <Link to={`galleries/${gallery.id}`} key={gallery.id}><img src={preImg} alt={gallery.theme} width="20px"/>{gallery.name}</Link>
-        )
-    }
-    )}
 
-  </nav>
-  )
+  const buddist = galleries.filter((gallery) => gallery.name === 'Buddhist Sculpture');
+ const early = galleries.filter(gallery => gallery.name === "Early Chinese Art")
+ const islamic = galleries.filter(gallery => gallery.name === "Art from Islamic Lands")
+  const mediterranean = galleries.filter(
+    (gallery) => gallery.name === 'Ancient Mediterranean and Near Eastern Art'
+  );
+  const special = galleries.filter(gallery => gallery.name === "Special Exhibitions Gallery")
+  const categories = [buddist, early, islamic, mediterranean, special];
+
+  // console.log(early, buddist, mediterranean, islamic, special)
+  return (
+    <>
+    <nav>
+      {categories.map((category, key) => (
+        <div key={key} className="nav-item">
+        {category.map((gallery) => {
+          const preImg = gallery.objects[0].primaryimageurl;
+          return (
+            <Link className="img-link" to={`galleries/${gallery.id}`}>
+              {category.length < 2 ? (
+                <div
+                  key={gallery.id}
+                  className="backgroundImg-small"
+                  style={{ backgroundImage: `url(${preImg})` }}></div>
+              ) : (
+                <div
+                  key={gallery.id}
+                  className="backgroundImg"
+                  style={{ backgroundImage: `url(${preImg})` }}></div>
+              )}
+            </Link>
+          );
+        })}
+        <div className="name">{category[0].name}</div>
+      </div>
+))}
+    </nav>
+        <div className="home-button">
+          <Link to="/">
+          <HomeIcon />
+      </Link>
+        </div>
+    </>
+  );
 };
 export default GalleryNavigation;
-    // <nav>
-    //   <NavLink to="/">Home</NavLink>
-    //   {galleries.map((gallery) => {
-    //     console.log('gallery0', gallery.objects.length);
-    //     return (
-    //       <NavLink to={`galleries/${gallery.id}`} key={gallery.id}>
-    //       <div>
-    //         {(gallery.name)? gallery.name: null}<img src={gallery.objects[0].baseimageurl | null} alt={gallery.theme} width="20px"/>
-    //         </div>
-    //       </NavLink>
-    //   )}
-    //   )}
-    // </nav>
