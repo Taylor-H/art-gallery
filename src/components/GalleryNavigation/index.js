@@ -18,8 +18,8 @@ const GalleryNavigation = (props) => {
   return (
     <>
     <nav>
-      {categories.map((category, key) => (
-        <div key={key} className="nav-item">
+      {categories.map((category) => (
+        <div key={category['gallerynumber']} className="nav-item">
         {category.map((gallery) => {
           const preImg = gallery.objects[0].primaryimageurl;
           return (
