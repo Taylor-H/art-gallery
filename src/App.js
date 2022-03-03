@@ -2,7 +2,7 @@ import { Routes, Route, useParams, Outlet, Link } from 'react-router-dom';
 import React from 'react';
 import harvardArt from './data/HarvardArt';
 import GalleryNavigation from './components/GalleryNavigation';
-import FourOFour from './components/GalleryNavigation/FourOFour';
+import FourOFour from './components/FourOFour';
 
 const galleries = harvardArt.records;
 const getGallery = (galleryId) => {
