@@ -14,39 +14,41 @@ const GalleryNavigation = (props) => {
   const special = galleries.filter(gallery => gallery.name === "Special Exhibitions Gallery")
   const categories = [buddist, early, islamic, mediterranean, special];
 
-  // console.log(early, buddist, mediterranean, islamic, special)
   return (
     <>
-    <nav>
-      {categories.map((category) => (
-        <div key={category['gallerynumber']} className="nav-item">
-        {category.map((gallery) => {
-          const preImg = gallery.objects[0].primaryimageurl;
-          return (
-            <Link className="img-link" to={`galleries/${gallery.id}`}>
-              {category.length < 2 ? (
-                <div
-                  key={gallery.id}
-                  className="backgroundImg-small"
-                  style={{ backgroundImage: `url(${preImg})` }}></div>
-              ) : (
-                <div
-                  key={gallery.id}
-                  className="backgroundImg"
-                  style={{ backgroundImage: `url(${preImg})` }}></div>
-              )}
-            </Link>
-          );
-        })}
-        <div className="name">{category[0].name}</div>
-      </div>
-))}
-    </nav>
-        <div className="home-button">
-          <Link to="/">
+      <nav>
+        {categories.map((category, key) => (
+          <div key={key} className="nav-item">
+
+            {category.map((gallery) => {
+
+              const preImg = gallery.objects[0].primaryimageurl;
+              return (
+                <Link
+                  className="img-link"
+                  key={gallery['gallerynumber']}
+                  to={`galleries/${gallery.id}`}>
+                  {category.length < 2 ? (
+                    <div
+                      className="backgroundImg-small"
+                      style={{ backgroundImage: `url(${preImg})` }}></div>
+                  ) : (
+                    <div
+                      className="backgroundImg"
+                      style={{ backgroundImage: `url(${preImg})` }}></div>
+                  )}
+                </Link>
+              );
+            })}
+            <div className="name">{category[0].name}</div>
+          </div>
+        ))}
+      </nav>
+      <div className="home-button">
+        <Link to="/">
           <HomeIcon />
-      </Link>
-        </div>
+        </Link>
+      </div>
     </>
   );
 };

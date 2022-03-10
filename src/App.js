@@ -1,21 +1,12 @@
-import { Routes, Route, useParams, Outlet, Link } from 'react-router-dom';
-import React from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import harvardArt from './data/HarvardArt';
 import GalleryNavigation from './components/GalleryNavigation';
+import ArtView from './components/ArtView';
 import FourOFour from './components/FourOFour';
-
+import GalleryView from './components/GalleryView';
 const galleries = harvardArt.records;
-const getGallery = (galleryId) => {
-  return harvardArt.records.find(
-    ({ gallerynumber }) => gallerynumber === galleryId
-  );
-};
 
-const getArt = (galleryId, artId) => {
-  const artObjects = getGallery(galleryId).objects;
-  const object = artObjects.find((object) => object.id.toString() === artId);
-  return object;
-};
 
 function App() {
   return (
@@ -31,11 +22,12 @@ function App() {
   );
 }
 function Layout() {
+
   return (
     <div className="main">
       <GalleryNavigation galleries={galleries} />
       <div className="content">
-        <Outlet />
+        <Outlet context={{galleries}}/>
       </div>
     </div>
   );
@@ -51,44 +43,6 @@ function Home() {
     </>
   );
 }
-function GalleryView() {
-  let { galleryId } = useParams();
-  const gallery = galleries.find(
-    ({ gallerynumber }) => gallerynumber === galleryId
-  );
-  const artObjects = gallery.objects;
-  return (
-    <>
-      <div className="gallery">
-        <h1>{gallery.name}</h1>
-        {gallery
-          ? artObjects.map((art) => (
-              <Link to={`art/${art.id}`} key={art.id}>
-                <div className="galleryPreview">
-                  <img src={art.images[0].baseimageurl} alt={art.title} />
-                  {art.title}
-                </div>
-              </Link>
-            ))
-          : null}
-      </div>
-      <div className="art">
-        <Outlet />
-      </div>
-    </>
-  );
-}
-function ArtView() {
-  let { artId, galleryId } = useParams();
-  const artObj = getArt(galleryId, artId);
-  return (
-    <>
-      {artObj.images.map((image) => (
-        <div className="art-image" key={image.imageid}>
-          <img src={image.baseimageurl} alt={image.medium} />
-        </div>
-      ))}
-    </>
-  );
-}
+
+
 export default App;

@@ -19115,6 +19115,18 @@ const harvardArt = {
    }
   ]
  }
+export const getGallery = (galleryId) => {
+  return harvardArt.records.find(
+    ({ gallerynumber }) => gallerynumber === galleryId
+  );
+};
+
+export const getArt = (galleryId, artId) => {
+  const artObjects = getGallery(galleryId).objects;
+  const object = artObjects.find((object) => object.id.toString() === artId);
+  return object;
+};
+
 
 
  export default harvardArt;

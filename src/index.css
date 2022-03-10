@@ -1,28 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@400;700&display=swap');
 
-a{
+a {
   text-decoration: none;
-  display: block;
-  color: rgb(45, 45, 45);
+  color: rgb(0, 0, 0);
   font-family: 'Miriam Libre', sans-serif;
 }
-
-.active{
+.active {
   font-weight: bold;
   text-decoration: none;
-
 }
-.galleryPreview{
+.galleryPreview {
+  max-width: 30%;
+  min-height: 130px;
+  max-height: 150px;
   display: flex;
-  flex-direction: column;
+}
+.galleryPreview img {
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.gallery-info {
+  min-width: 50%;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  color: rgb(0, 0, 0);
+  font-family: 'Miriam Libre', sans-serif;
+  font-size: 0.8rem;
+  max-height: 90px;
+  align-content: flex-start;
+  margin: .3rem;
 }
-.galleryPreview img{
+.gallery-info h3 {
+  min-width: 90%;
+  height: fit-content;
+  margin: 0;
+}
+.gallery-info p {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.main{
+.main {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -31,48 +51,92 @@ a{
   width: 100%;
   height: 100%;
   z-index: 0;
-  }
-.gallery{
+}
+.gallery {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   width: 30%;
-  background-color: rgb(169, 171, 171);
   z-index: 0;
   font-family: 'Miriam Libre', sans-serif;
 }
-.gallery a {
-  width: 30%;
+
+.gallery h1 {
+  display: block;
+  font-weight: bold;
+  font-family: 'Miriam Libre', sans-serif;
 }
-.art{
+.gallery a {
+  border: 1px solid black;
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.art {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
   width: 60%;
-  height: 80vh;
-  padding: .15rem;
-  background-color: rgba(154, 95, 160, 0.38);
+  height: 75vh;
+  padding: 1rem;
+  border: 2px solid blue;
 }
-.art-image{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: .1rem;
-  background-color: rgba(154, 95, 160, 0.38);
-}
-.art-image img{
+.art-image {
   width: 100%;
-}
-.hide {
-  display: none;
-}
-.content{
+  min-height: 750px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  border: 2px solid rgb(232, 27, 255);
+}
+.art-image img {
+  max-height: 100%;
+  max-width: 100%;
+  justify-content: center;
+  border: 2px solid rgb(232, 255, 27);
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  padding: .1rem;
-  background-color: rgba(154, 95, 160, 0.38);
+  width: 98vw;
+  height: 80vh;
+  padding: 0.1rem;
+}
+
+
+.pagination {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  outline: none;
+  height: 4em;
+}
+.pagination > .active > a{
+  background-color: #47ccde ;
+  border-color: #47ccde ;
+  color: #fff;
+}
+.pagination > li > a{
+  border: 1px solid #000000 ;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  background-color: #003037;
+  border-color: #003037;
+;
+  outline: none ;
+}
+.pagination > li > a, .pagination > li > span{
+  color: #47ccde
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+  border-radius: unset
 }
