@@ -1,10 +1,7 @@
 import {  useOutletContext, useParams, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { getGallery} from '../../data/HarvardArt';
 import ArtView from '../ArtView';
-import { StyledPaginate } from '../Styled';
-
-
 
 
 const GalleryView = (props) => {
@@ -16,38 +13,7 @@ const GalleryView = (props) => {
   const sortedArtObjects = artObjects.sort(
     (obj1, obj2) => obj1.datebegin - obj2.datebegin
     );
-    // const [offset, setOffset] = useState(0);
-    // const [data, setData] = useState([]);
-    // const [perPage] = useState(1);
-    // const [pageCount, setPageCount] = useState(0);
-//     useEffect(() => {
-//       const getData = () => {
-//         const slice = galleries.slice(offset, offset + perPage);
-//         console.log('galleryslice: ', slice, 'offset: ', offset, 'perPage: ', perPage);
 
-//         const galleryData = galleries.map((gal) => {
-//          const galPrevImg = gal.objects[0].primaryimageurl;
-//           return (
-//             <div key={`${gal['gallerynumber']}`} className="art-image">
-//               <img
-//                 src={`${galPrevImg}`}
-//                 alt={''}
-//               />
-//             </div>
-//           );});
-//     setData(galleryData);
-//     console.log('pageCountGallery', Math.ceil(galleryData.length / perPage));
-//     setPageCount(Math.ceil(galleryData.length / perPage));
-//   };
-
-//   getData();
-// }, [galleries, offset, setData, galleryId, perPage, setPageCount]);
-
-//   const handlePageClick = (e) => {
-//   const selectedPage = e.selected;
-//   console.log("selectedPage", selectedPage);
-// setOffset(0);
-// };
   return (
     <>
       <div className="gallery">
@@ -84,22 +50,6 @@ const GalleryView = (props) => {
       <div className="art">
         {!artId ? (
           <><img src={gallery.objects[0].primaryimageurl} alt="" />
-            {/* {data}
-            <StyledPaginate
-              itemsPerPage={1}
-              previousLabel={'< prev'}
-              nextLabel={'next>'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              pageCount={pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              forcePage={-1}
-              onPageChange={handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
-            /> */}
             <div className="art-info">{gallery.labeltext}</div>
           </>
         ) : (
