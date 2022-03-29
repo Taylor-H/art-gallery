@@ -7,7 +7,6 @@ import FourOFour from './components/FourOFour';
 import GalleryView from './components/GalleryView';
 const galleries = harvardArt.records;
 
-
 function App() {
   return (
     <Routes>
@@ -22,25 +21,42 @@ function App() {
   );
 }
 function Layout() {
-
   return (
     <div className="main">
       <GalleryNavigation galleries={galleries} />
-      <div className="content">
+
         <Outlet context={{galleries}}/>
-      </div>
+
     </div>
   );
 }
 function Home() {
   return (
-    <>
-      <h2>Harvard Art Museum</h2>
-      <p>
-        An abbreviated look at the galleries of the museum at Harvard
-        University.
+    <div className="home">
+      <h2>Art Museum</h2>
+      <p className="home">
+        An abbreviated look at the galleries at Harvard Art Museum. The Harvard
+        Art Museum offers a REST-style service for developers to use. See
+        <a href="https://api.harvardartmuseums.org" alt="Harvard Art Museum">
+          {' '}
+          https://api.harvardartmuseums.org
+        </a>{' '}
+        for more info.
+        <br />
       </p>
-    </>
+      <p className="home">
+        The API gives direct access to their massive collection of data. Very
+        useful for web developers building a multi level slide app. I built this
+        using React and React Router for front end routing. I used a slide
+        library called Splide for the gallery. I mapped over all the galleries
+        in my sample to form the top navigation sorted by period. <br />
+      </p>
+      <p className="home">
+        Choosing a gallery will show all the items in that gallery as small cards going down the side. Clicking on
+        an item wil get a gallery with all the images associated with that item.
+        Filtering through three levels to get to the more detailed images..
+      </p>
+    </div>
   );
 }
 

@@ -1,36 +1,48 @@
 @use './components/GalleryNavigation/styles.scss';
+@use './components/GalleryView/GalleryStyles.scss';
 @use './styles/webfontkit/stylesheet.scss';
+@use './components/ArtView/ArtStyles.scss';
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-family: 'miriam_libreregular', sans-serif;
+  &:hover {
+    font-weight: bold;
+  }
 }
 .active {
   font-weight: bold;
   text-decoration: none;
 }
-.galleryPreview {
-  max-width: 30%;
-  min-height: 130px;
-  max-height: 150px;
-  display: flex;
-}
-.galleryPreview img {
-  max-width: 90%;
-  object-fit: cover;
-  object-position: 20% center;
-  background-color: #007b9d;
+div.home {
+  width: 70%;
+  max-width: 1600px;
+    font-family: 'miriam_libreregular', sans-serif;
+  font-size: 1.2rem;
+  padding: 3rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  a{
+    text-decoration: underline;
+  }
 }
 
 .gallery-info {
-  min-width: 50%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   display: flex;
+  flex-direction: column;
   color: rgb(0, 0, 0);
   font-family: 'miriam_libreregular', sans-serif;
-  font-size: 0.8rem;
-  max-height: 90px;
+  font-size: 0.9rem;
+  max-height: max-content;
+  min-width: 40%;
   align-content: flex-start;
   margin: 0.3rem;
 }
@@ -43,8 +55,11 @@ a {
   width: 100%;
   margin: 0;
   padding: 0;
+
 }
+
 .main {
+  max-width: 1600px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -54,15 +69,7 @@ a {
   height: 100%;
   z-index: 0;
 }
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  width: 31%;
-  height: auto;
-  z-index: 0;
-  font-family: 'miriam_libreregular', sans-serif;
-}
+
 
 .gallery h1 {
   display: block;
@@ -71,41 +78,15 @@ a {
 }
 .gallery a {
   border: 1px solid transparent;
-  width: 100%;
-  height: auto;
+  height: 200px;
   display: flex;
   &:hover {
     border: 1px solid rgb(0, 0, 0);
   }
   overflow: hidden;
 }
-.art {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  width: 75%;
-  padding: 1rem;
-}
-.art img {
-  max-width: 70%;
-  max-height: 50%;
-  object-fit: contain;
-  object-position: 50% 50%;
-}
-li.splide__slide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-.splide__slide img {
-  height: 50%;
-}
-.splide__track {
-  height: fit-content;
-  width: 80%;
-}
+
+
 button.splide__pagination__page {
   background-color: #0090b8;
   color: black;

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
     "@splidejs/react-splide": "^0.6.20",
     "axios": "^0.26.0",
     "node": "^17.0.1",
